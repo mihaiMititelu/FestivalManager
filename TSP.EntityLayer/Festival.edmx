@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Festival.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="FestivalStoreContainer">
+    <EntitySet Name="Festivals" EntityType="Festival.Store.Festivals" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Locations" EntityType="Festival.Store.Locations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Performers" EntityType="Festival.Store.Performers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tickets" EntityType="Festival.Store.Tickets" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PerformerTicket" EntityType="Festival.Store.PerformerTicket" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FestivalPerformer" Association="Festival.Store.FestivalPerformer">
+      <End Role="Festival" EntitySet="Festivals" />
+      <End Role="Performer" EntitySet="Performers" />
+    </AssociationSet>
+    <AssociationSet Name="FestivalTicket" Association="Festival.Store.FestivalTicket">
+      <End Role="Festival" EntitySet="Festivals" />
+      <End Role="Ticket" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PerformerTicket_Performer" Association="Festival.Store.FK_PerformerTicket_Performer">
+      <End Role="Performer" EntitySet="Performers" />
+      <End Role="PerformerTicket" EntitySet="PerformerTicket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PerformerTicket_Ticket" Association="Festival.Store.FK_PerformerTicket_Ticket">
+      <End Role="Ticket" EntitySet="Tickets" />
+      <End Role="PerformerTicket" EntitySet="PerformerTicket" />
+    </AssociationSet>
+    <AssociationSet Name="FestivalLocation" Association="Festival.Store.FestivalLocation">
+      <End Role="Festival" EntitySet="Festivals" />
+      <End Role="Location" EntitySet="Locations" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Festivals">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateAndTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Locations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Capacity" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Festival_Id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Performers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RequestedPay" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FestivalId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tickets">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="FestivalId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PerformerTicket">
+    <Key>
+      <PropertyRef Name="Performers_Id" />
+      <PropertyRef Name="Tickets_Id" />
+    </Key>
+    <Property Name="Performers_Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Tickets_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FestivalPerformer">
+    <End Role="Festival" Type="Festival.Store.Festivals" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Performer" Type="Festival.Store.Performers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Festival">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Performer">
+        <PropertyRef Name="FestivalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FestivalTicket">
+    <End Role="Festival" Type="Festival.Store.Festivals" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Ticket" Type="Festival.Store.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Festival">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ticket">
+        <PropertyRef Name="FestivalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FestivalLocation">
+    <End Role="Festival" Type="Festival.Store.Festivals" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Location" Type="Festival.Store.Locations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Festival">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Location">
+        <PropertyRef Name="Festival_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PerformerTicket_Performer">
+    <End Role="Performer" Type="Festival.Store.Performers" Multiplicity="1" />
+    <End Role="PerformerTicket" Type="Festival.Store.PerformerTicket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Performer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PerformerTicket">
+        <PropertyRef Name="Performers_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PerformerTicket_Ticket">
+    <End Role="PerformerTicket" Type="Festival.Store.PerformerTicket" Multiplicity="*" />
+    <End Role="Ticket" Type="Festival.Store.Tickets" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Ticket">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PerformerTicket">
+        <PropertyRef Name="Tickets_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Festival" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="FestivalContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Festivals" EntityType="Festival.Festival" />
+          <EntitySet Name="Locations" EntityType="Festival.Location" />
+          <EntitySet Name="Performers" EntityType="Festival.Performer" />
+          <AssociationSet Name="FestivalPerformer" Association="Festival.FestivalPerformer">
+            <End Role="Festival" EntitySet="Festivals" />
+            <End Role="Performer" EntitySet="Performers" />
+          </AssociationSet>
+          <EntitySet Name="Tickets" EntityType="Festival.Ticket" />
+          <AssociationSet Name="FestivalTicket" Association="Festival.FestivalTicket">
+            <End Role="Festival" EntitySet="Festivals" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="PerformerTicket" Association="Festival.PerformerTicket">
+            <End Role="Performer" EntitySet="Performers" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FestivalLocation" Association="Festival.FestivalLocation">
+            <End Role="Festival" EntitySet="Festivals" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Festival">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="DateAndTime" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Performers" Relationship="Festival.FestivalPerformer" FromRole="Festival" ToRole="Performer" />
+          <NavigationProperty Name="Tickets" Relationship="Festival.FestivalTicket" FromRole="Festival" ToRole="Ticket" />
+          <NavigationProperty Name="Location" Relationship="Festival.FestivalLocation" FromRole="Festival" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Capacity" Type="String" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Festival" Relationship="Festival.FestivalLocation" FromRole="Location" ToRole="Festival" />
+        </EntityType>
+        <EntityType Name="Performer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="RequestedPay" Type="String" Nullable="false" />
+          <NavigationProperty Name="Festival" Relationship="Festival.FestivalPerformer" FromRole="Performer" ToRole="Festival" />
+          <Property Name="FestivalId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Tickets" Relationship="Festival.PerformerTicket" FromRole="Performer" ToRole="Ticket" />
+        </EntityType>
+        <Association Name="FestivalPerformer">
+          <End Type="Festival.Festival" Role="Festival" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Festival.Performer" Role="Performer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Festival">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Performer">
+              <PropertyRef Name="FestivalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <NavigationProperty Name="Festival" Relationship="Festival.FestivalTicket" FromRole="Ticket" ToRole="Festival" />
+          <Property Name="FestivalId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Performers" Relationship="Festival.PerformerTicket" FromRole="Ticket" ToRole="Performer" />
+        </EntityType>
+        <Association Name="FestivalTicket">
+          <End Type="Festival.Festival" Role="Festival" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Festival.Ticket" Role="Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Festival">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="FestivalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PerformerTicket">
+          <End Type="Festival.Performer" Role="Performer" Multiplicity="*" />
+          <End Type="Festival.Ticket" Role="Ticket" Multiplicity="*" />
+        </Association>
+        <Association Name="FestivalLocation">
+          <End Type="Festival.Festival" Role="Festival" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Festival.Location" Role="Location" Multiplicity="1" >
+          </End>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FestivalStoreContainer" CdmEntityContainer="FestivalContainer">
+    <EntitySetMapping Name="Festivals">
+      <EntityTypeMapping TypeName="IsTypeOf(Festival.Festival)">
+        <MappingFragment StoreEntitySet="Festivals">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="IsTypeOf(Festival.Location)">
+        <MappingFragment StoreEntitySet="Locations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Performers">
+      <EntityTypeMapping TypeName="IsTypeOf(Festival.Performer)">
+        <MappingFragment StoreEntitySet="Performers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RequestedPay" ColumnName="RequestedPay" />
+          <ScalarProperty Name="FestivalId" ColumnName="FestivalId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tickets">
+      <EntityTypeMapping TypeName="IsTypeOf(Festival.Ticket)">
+        <MappingFragment StoreEntitySet="Tickets">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FestivalId" ColumnName="FestivalId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PerformerTicket" TypeName="Festival.PerformerTicket" StoreEntitySet="PerformerTicket">
+      <EndProperty Name="Performer">
+        <ScalarProperty Name="Id" ColumnName="Performers_Id" />
+      </EndProperty>
+      <EndProperty Name="Ticket">
+        <ScalarProperty Name="Id" ColumnName="Tickets_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FestivalLocation" TypeName="Festival.FestivalLocation" StoreEntitySet="Locations">
+      <EndProperty Name="Festival">
+        <ScalarProperty Name="Id" ColumnName="Festival_Id" />
+      </EndProperty>
+      <EndProperty Name="Location">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

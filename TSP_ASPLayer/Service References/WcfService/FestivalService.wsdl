@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="FestivalService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:59269/FestivalService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:59269/FestivalService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:59269/FestivalService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TSP.EntityLayer" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IFestival_GetFestivalByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFestivalByName" />
+  </wsdl:message>
+  <wsdl:message name="IFestival_GetFestivalByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFestivalByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFestival_GetAllFestivals_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFestivals" />
+  </wsdl:message>
+  <wsdl:message name="IFestival_GetAllFestivals_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllFestivalsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFestival_CreateNewFestival_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewFestival" />
+  </wsdl:message>
+  <wsdl:message name="IFestival_CreateNewFestival_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateNewFestivalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFestival_AddLocationToFestival_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddLocationToFestival" />
+  </wsdl:message>
+  <wsdl:message name="IFestival_AddLocationToFestival_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddLocationToFestivalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFestival_AddPerformerToFestival_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddPerformerToFestival" />
+  </wsdl:message>
+  <wsdl:message name="IFestival_AddPerformerToFestival_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddPerformerToFestivalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFestival_AddTicketToFestival_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTicketToFestival" />
+  </wsdl:message>
+  <wsdl:message name="IFestival_AddTicketToFestival_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTicketToFestivalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFestival_DeleteFestival_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFestival" />
+  </wsdl:message>
+  <wsdl:message name="IFestival_DeleteFestival_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFestivalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFestival_DeleteLocationFromFestival_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteLocationFromFestival" />
+  </wsdl:message>
+  <wsdl:message name="IFestival_DeleteLocationFromFestival_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteLocationFromFestivalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFestival_DeletePerformerFromFestival_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePerformerFromFestival" />
+  </wsdl:message>
+  <wsdl:message name="IFestival_DeletePerformerFromFestival_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePerformerFromFestivalResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IFestival">
+    <wsdl:operation name="GetFestivalByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFestival/GetFestivalByName" message="tns:IFestival_GetFestivalByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFestival/GetFestivalByNameResponse" message="tns:IFestival_GetFestivalByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFestivals">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFestival/GetAllFestivals" message="tns:IFestival_GetAllFestivals_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFestival/GetAllFestivalsResponse" message="tns:IFestival_GetAllFestivals_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewFestival">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFestival/CreateNewFestival" message="tns:IFestival_CreateNewFestival_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFestival/CreateNewFestivalResponse" message="tns:IFestival_CreateNewFestival_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddLocationToFestival">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFestival/AddLocationToFestival" message="tns:IFestival_AddLocationToFestival_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFestival/AddLocationToFestivalResponse" message="tns:IFestival_AddLocationToFestival_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPerformerToFestival">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFestival/AddPerformerToFestival" message="tns:IFestival_AddPerformerToFestival_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFestival/AddPerformerToFestivalResponse" message="tns:IFestival_AddPerformerToFestival_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTicketToFestival">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFestival/AddTicketToFestival" message="tns:IFestival_AddTicketToFestival_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFestival/AddTicketToFestivalResponse" message="tns:IFestival_AddTicketToFestival_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFestival">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFestival/DeleteFestival" message="tns:IFestival_DeleteFestival_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFestival/DeleteFestivalResponse" message="tns:IFestival_DeleteFestival_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLocationFromFestival">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFestival/DeleteLocationFromFestival" message="tns:IFestival_DeleteLocationFromFestival_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFestival/DeleteLocationFromFestivalResponse" message="tns:IFestival_DeleteLocationFromFestival_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePerformerFromFestival">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFestival/DeletePerformerFromFestival" message="tns:IFestival_DeletePerformerFromFestival_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFestival/DeletePerformerFromFestivalResponse" message="tns:IFestival_DeletePerformerFromFestival_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IFestival" type="tns:IFestival">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetFestivalByName">
+      <soap:operation soapAction="http://tempuri.org/IFestival/GetFestivalByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllFestivals">
+      <soap:operation soapAction="http://tempuri.org/IFestival/GetAllFestivals" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateNewFestival">
+      <soap:operation soapAction="http://tempuri.org/IFestival/CreateNewFestival" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLocationToFestival">
+      <soap:operation soapAction="http://tempuri.org/IFestival/AddLocationToFestival" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPerformerToFestival">
+      <soap:operation soapAction="http://tempuri.org/IFestival/AddPerformerToFestival" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTicketToFestival">
+      <soap:operation soapAction="http://tempuri.org/IFestival/AddTicketToFestival" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFestival">
+      <soap:operation soapAction="http://tempuri.org/IFestival/DeleteFestival" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLocationFromFestival">
+      <soap:operation soapAction="http://tempuri.org/IFestival/DeleteLocationFromFestival" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePerformerFromFestival">
+      <soap:operation soapAction="http://tempuri.org/IFestival/DeletePerformerFromFestival" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FestivalService">
+    <wsdl:port name="BasicHttpBinding_IFestival" binding="tns:BasicHttpBinding_IFestival">
+      <soap:address location="http://localhost:59269/FestivalService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

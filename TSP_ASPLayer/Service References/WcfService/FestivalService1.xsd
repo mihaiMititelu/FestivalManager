@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/TSP.EntityLayer" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TSP.EntityLayer" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:59269/FestivalService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="Festival">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateAndTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="tns:Location" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Performers" nillable="true" type="tns:ArrayOfPerformer" />
+      <xs:element minOccurs="0" name="Tickets" nillable="true" type="tns:ArrayOfTicket" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Festival" nillable="true" type="tns:Festival" />
+  <xs:complexType name="Location">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Capacity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Festival" nillable="true" type="tns:Festival" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Location" nillable="true" type="tns:Location" />
+  <xs:complexType name="ArrayOfPerformer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Performer" nillable="true" type="tns:Performer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPerformer" nillable="true" type="tns:ArrayOfPerformer" />
+  <xs:complexType name="Performer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Festival" nillable="true" type="tns:Festival" />
+      <xs:element minOccurs="0" name="FestivalId" type="ser:guid" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RequestedPay" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tickets" nillable="true" type="tns:ArrayOfTicket" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Performer" nillable="true" type="tns:Performer" />
+  <xs:complexType name="ArrayOfTicket">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Ticket" nillable="true" type="tns:Ticket" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTicket" nillable="true" type="tns:ArrayOfTicket" />
+  <xs:complexType name="Ticket">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Festival" nillable="true" type="tns:Festival" />
+      <xs:element minOccurs="0" name="FestivalId" type="ser:guid" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Performers" nillable="true" type="tns:ArrayOfPerformer" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Ticket" nillable="true" type="tns:Ticket" />
+  <xs:complexType name="ArrayOfFestival">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Festival" nillable="true" type="tns:Festival" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFestival" nillable="true" type="tns:ArrayOfFestival" />
+</xs:schema>

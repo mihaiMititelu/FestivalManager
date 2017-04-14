@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5765985fd90d41eeb0431cda163fe832" Name="Diagram1" >
+        <EntityTypeShape EntityType="Festival.Festival" Width="1.5" PointX="4.75" PointY="1" />
+        <EntityTypeShape EntityType="Festival.Location" Width="1.5" PointX="7.25" PointY="1.25" />
+        <EntityTypeShape EntityType="Festival.Performer" Width="1.5" PointX="1.75" PointY="1.125" />
+        <AssociationConnector Association="Festival.FestivalPerformer" />
+        <EntityTypeShape EntityType="Festival.Ticket" Width="1.5" PointX="4.625" PointY="3.875" />
+        <AssociationConnector Association="Festival.FestivalTicket" />
+        <AssociationConnector Association="Festival.PerformerTicket" />
+        <AssociationConnector Association="Festival.FestivalLocation" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
