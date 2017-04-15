@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<TSP_ASPLayer.WcfService.Festival>
-
 @{
     ViewBag.Title = "Festival List";
 }
@@ -10,11 +9,11 @@
             <li class="list-group-item">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        @item.Name.ToUpper()
+                        @item.Name
                     </div>
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <span class="label label-primary">When:</span> 
+                            <span class="label label-primary">When:</span>
                             @item.DateAndTime.ToString("MMM dd, yyyy @HH:mm")
                         </li>
                         <li class="list-group-item">
@@ -27,7 +26,10 @@
                         </li>
                         <li class="list-group-item">
                             <span class="label label-primary">Performing:</span>
-@*                            @item.Performers[0]*@
+                            @foreach (var t in item.Performers)
+                            {
+                                <span class="label label-info">@t.Name</span>
+                            }
                         </li>
                     </ul>
                 </div>
