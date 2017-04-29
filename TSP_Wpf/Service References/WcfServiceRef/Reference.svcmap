@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="11d93d4f-d35a-4a7c-a740-8dd07150df6a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:59269/FestivalService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FestivalService.disco" MetadataType="Disco" ID="777913eb-834c-4f5e-9e93-ac2ec6cf24ee" SourceId="1" SourceUrl="http://localhost:59269/FestivalService.svc?disco" />
+    <MetadataFile FileName="FestivalService.xsd" MetadataType="Schema" ID="ec551f01-c97f-48ba-804a-76eceea784bf" SourceId="1" SourceUrl="http://localhost:59269/FestivalService.svc?xsd=xsd0" />
+    <MetadataFile FileName="FestivalService1.xsd" MetadataType="Schema" ID="27c714bc-c340-4881-8253-4adfe3a59f4d" SourceId="1" SourceUrl="http://localhost:59269/FestivalService.svc?xsd=xsd2" />
+    <MetadataFile FileName="FestivalService2.xsd" MetadataType="Schema" ID="4d345c57-2794-4b19-83f1-664b0384f5bd" SourceId="1" SourceUrl="http://localhost:59269/FestivalService.svc?xsd=xsd1" />
+    <MetadataFile FileName="FestivalService.wsdl" MetadataType="Wsdl" ID="7a3b0bf1-174f-4c09-ac36-f7672f37f6a0" SourceId="1" SourceUrl="http://localhost:59269/FestivalService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
